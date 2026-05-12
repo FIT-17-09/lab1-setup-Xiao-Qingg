@@ -101,3 +101,25 @@ flowchart LR
     Analytics --> Dashboard[Dashboard / Frontend]
     Analytics --> Admin[Admin / Operator]
 ```
+![alt text](image.png) - Hình thực hành phần 1
+
+## Phần thực hành 2
+- Ai là consumer?
+Nhóm 13 (Analytics) là consumer của 4 nhóm sau — tức là nhóm mình gọi API đến để lấy dữ liệu:
++ Nhóm làm IoT Ingestion → lấy nhiệt độ, chuyển động
++ Nhóm làm Camera / AI Vision → lấy dữ liệu phát hiện
++ Nhóm làm Access Gate → lấy lượt ra/vào
++ Nhóm làm Core Business → lấy cảnh báo, quyết định
+
+- Ai là provider?
+Nhóm 13 là provider cho:
++ Nhóm làm Dashboard/Frontend → họ gọi API /analytics/... của mình để hiển thị báo cáo
+
+- Điểm giao tiếp cần chốt với các nhóm:
+| Nhóm               |Cần chốt|
+|--------------------|-------------------------------------------------|
+| IoT Ingestion      | Endpoint lấy dữ liệu cảm biến, format JSON trả về|
+| Camera / AI Vision | Endpoint lấy kết quả phát hiện, tần suất cập nhật|
+| Access Gate        | Endpoint lấy log ra/vào, lọc theo thời gian|
+| Core Business      | Endpoint lấy danh sách cảnh báo|
+| Dashboard/Frontend | Format JSON output của /analytics/summary, tần suất gọi|
